@@ -42,16 +42,16 @@
             This example has the preprocessor include a file, and also define two macros.
           </p>
           <ul>
-              <li><code>#include <filename></code></li> this has CPP include the contents of <em>filename</em> into the current file.
-              <li><code>#define macro body </code></li> The CPP replaces all occurrences of <em>macro</em> with <em>body</em>
+			  <li><code>#include <filename></code> this has CPP include the contents of <em>filename</em> into the current file.</li>
+				  <li><code>#define macro body </code> The CPP replaces all occurrences of <em>macro</em> with <em>body</em></li>
           </ul>
           <p>
               In the follow example, we include <em>stdio.h</em> header into our file so that we have access to <code>printf()</code>. <br>
-              We also define a macro for <em>PI</em> which expands out into <em>3.14159</em> and one called <em>str</em>.<br>
+              We also define a macro for <em>PI</em> which expands out into <em>3.14159</em> and a macro called <em>str</em>.<br>
               The code then shows a few examples of these macros being used. Nothing fancy or complicated but i think you get the idea.
           </p>
           <figure id="example_1">
-<img alt="" border="0" data-original-height="211" data-original-width="719" width="640" src="https://1.bp.blogspot.com/-DZwnFJNiIKE/X1CMZvxb7cI/AAAAAAAADtw/fTC1czm2jjYme549uggV4n6iLy0limYtgCLcBGAsYHQ/s0/ex1.png"/>
+<img alt="" border="0" data-original-height="211" data-original-width="719" width="640" src="./img/ex1.png"/>
             <figcaption>Macros in C. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example1.c">code</a></figcaption>
           </figure>
       </section>
@@ -77,7 +77,7 @@
             In the example code, we create a function like macro which takes in a number and returns the square of it.
           </p>
           <figure id="function_macros">
-<img alt="" border="0" data-original-height="210" data-original-width="870" width="640" src="https://1.bp.blogspot.com/-XE0jpxv0YZk/X1CMZjV_0xI/AAAAAAAADto/0wjyr-0S7NI_R2BVHAIPxw1aMMQE9Td-ACLcBGAsYHQ/s0/ex2.png"/>
+<img alt="" border="0" data-original-height="210" data-original-width="870" width="640" src="./img/ex2.png"/>
               <figcaption>Function like macros in C. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example2.c">code</a></figcaption>
           </figure>
       </section>
@@ -95,11 +95,11 @@
               <li><code>#define "file"</code> search for <em>file</em> in same directory as current file then include it into our current file.</li>
           </ul>
           <figure id="external_macros">
-<img alt="" border="0" data-original-height="196" data-original-width="738" width="640" src="https://1.bp.blogspot.com/-9gFnKf5isRE/X1CMZkmHNgI/AAAAAAAADts/FkxWw_WBx5I_slFX-ikZ_yIRUOzf1Qz6wCLcBGAsYHQ/s0/ex3.png"/>
+<img alt="" border="0" data-original-height="196" data-original-width="738" width="640" src="./img/ex3.png"/>
               <figcaption>Defining macros in an external file. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example3.c">code</a></figcaption>
           </figure>
           <figure id="macro_file">
-<img alt="" border="0" data-original-height="99" data-original-width="751" width="640" src="https://1.bp.blogspot.com/-e8UkiqcrM8A/X1CMdJMDvrI/AAAAAAAADuM/2Mbo5U9i2bQpOSigz1z9Y8IE_zxiHPCuQCLcBGAsYHQ/s0/macroh.png"/>
+<img alt="" border="0" data-original-height="99" data-original-width="751" width="640" src="./img/macroh.png"/>
               <figcaption>External macros in <em>macros.h</em>. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/macros.h">code</a></figcaption>
           </figure>
       </section>
@@ -128,7 +128,7 @@
             try commenting out <code>#undef X</code> and also try defining a macro <em>'A'</em> to see how this affects the output.
           </p> 
           <figure id="conditonal_processing">
-<img alt="" border="0" data-original-height="578" data-original-width="634" src="https://1.bp.blogspot.com/-ontozD_4XTE/X1CMaCnxCMI/AAAAAAAADt0/tHNuYin88lkuFc5l-H-Z-KmGrjBF60IXgCLcBGAsYHQ/s0/ex4.png"/>
+<img alt="" border="0" data-original-height="578" data-original-width="634" src="./img/ex4.png"/>
               <figcaption>Conditional processing in C. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example4.c">code</a></figcaption>
           </figure>
       </section>
@@ -151,7 +151,7 @@
               <li><code>__TIME__</code> returns the time at which the CPP started running.</li>
           </ul>
           <figure id="predefined_macros">
-<img alt="" border="0" data-original-height="386" data-original-width="689" width="640" src="https://1.bp.blogspot.com/-DMvUDeWYD8M/X1CMalUY3ZI/AAAAAAAADt4/VjB2559YBDkE03iLrL-wfreaG_PrFTvIwCLcBGAsYHQ/s0/ex5.png"/>
+<img alt="" border="0" data-original-height="386" data-original-width="689" width="640" src="./img/ex5.png"/>
               <figcaption>Predefined macros in C. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example5.c">code</a></figcaption>
           </figure>
       </section>
@@ -166,7 +166,7 @@
             Also shown is how to use a conditional to turn off a block of code without needing to delete it all or comment it all out.
           </p>
           <figure id="debug">
-<img alt="" border="0" data-original-height="513" data-original-width="780" width="640" src="https://1.bp.blogspot.com/-9Q6GWb_L9jw/X1CMbP873zI/AAAAAAAADt8/mRW0sTfL8zc4bGpzmxBBicROaKhAzknkwCLcBGAsYHQ/s0/ex6.png"/>
+<img alt="" border="0" data-original-height="513" data-original-width="780" width="640" src="./img/ex6.png"/>
               <figcaption>Debugging using conditionals with the CPP. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example6.c">code</a></figcaption>
           </figure>
       </section>
@@ -196,7 +196,7 @@
                   Using VA macro we can now call <em>DEBUG_MSSG()</em> with as many arguments as we need to handle our <em>fprintf</em> call.
               </p>
               <figure id="va_macro">
-<img alt="" border="0" data-original-height="400" data-original-width="860" width="640" src="https://1.bp.blogspot.com/--TPErzLeBMg/X1CMbs1KLZI/AAAAAAAADuA/q88NZU0rPEkMHUeDyJLgGMAZe9REK7OPQCLcBGAsYHQ/s0/ex7.png"/>
+<img alt="" border="0" data-original-height="400" data-original-width="860" width="640" src="./img/ex7.png"/>
                   <figcaption>macros with variable arguments. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example7.c">code</a></figcaption>
               </figure>
       </section>
@@ -277,7 +277,7 @@
             Compare this to the file <em>example1.c</em> to see how the CPP alters it. 
           </p>
           <figure id="output">
-<img alt="" border="0" data-original-height="174" data-original-width="613" src="https://1.bp.blogspot.com/-0Pm88LIPKNI/X1CMdtRcu3I/AAAAAAAADuQ/0GgJCfc3H8ogSPFK5DE0x0AjyuqXjOK5wCLcBGAsYHQ/s0/output.png"/>
+<img alt="" border="0" data-original-height="174" data-original-width="613" src="./img/output.png"/>
               <figcaption>output of CPP on example1.c</figcaption>
           </figure>
         <br>
@@ -291,7 +291,7 @@
             The CPP is designed for C code, when you try to use non standard C code with it, you can run into issues.
           </p>
           <figure id="html_tags">
-<img alt="" border="0" data-original-height="288" data-original-width="788" width="640" src="https://1.bp.blogspot.com/-ip9J4aNFhG8/X1CMcP5WF9I/AAAAAAAADuE/1L8I4VYW0Mg2bPAE-gGgsblOic3W95rHACLcBGAsYHQ/s0/ex8.png"/>
+<img alt="" border="0" data-original-height="288" data-original-width="788" width="640" src="./img/ex8.png"/>
               <figcaption>using CPP to expand macros into html tags. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/example8.c">code</a></figcaption>
           </figure>
           <figure id="standalone_cpp">
@@ -302,7 +302,7 @@
               Inspecting the file reveals it to generate a valid html file. all macros expand properly.
           </p> 
           <figure id="html_file">
-<img alt="" border="0" data-original-height="32" data-original-width="1100" width="640" src="https://1.bp.blogspot.com/-xZAxlRwsdes/X1CMci5F3lI/AAAAAAAADuI/4iPzw7BvQYseMHobL6wEjlxSyGGJ_N0yQCLcBGAsYHQ/s0/html.png"/>
+<img alt="" border="0" data-original-height="32" data-original-width="1100" width="640" src="./img/html.png"/>
               <figcaption>html file generated by the CPP. <a rel="external" target="_blank" href="https://github.com/lackluster-games/cpp/blob/master/ex.html">code</a></figcaption>
           </figure>
           <p>
@@ -310,7 +310,7 @@
               So  you see, it can be done, it's just not the best tool for the job.
           </p>
           <figure id="html_site">
-<img alt="" border="0" data-original-height="201" data-original-width="245" src="https://1.bp.blogspot.com/-YD2LTWdMhZQ/X1CMeKAmWHI/AAAAAAAADuU/cfpnQ9KontwY_OGjjavrUYxHjjO-4qTUgCLcBGAsYHQ/s0/website.png"/>
+<img alt="" border="0" data-original-height="201" data-original-width="245" src="./img/website.png"/>
               <figcaption>opening the html file in a browser</figcaption>
           </figure>
       </section>
@@ -340,10 +340,6 @@
 	<div class="Tags_List">
 	  <ul id="Tag_list">
 		  <li><a href="./pages/tags/c.html">C</a></li>
-		  <li><a href="./pages/tags/lua.html">Lua</a></li>
-		  <li><a href="./pages/tags/wren.html">Wren</a></li>
-		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
-		  <li><a href="./pages/tags/linux.html">Linux</a></li>
 	  </ul>
 	</div> 
 	<!-- About me section -->

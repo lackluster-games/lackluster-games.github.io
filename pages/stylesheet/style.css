@@ -1,3 +1,5 @@
+/* stylesheet for the blog pages of lacklustergames. */
+
 code {
    background-color: #CECECF;
    color: #191919;
@@ -61,8 +63,9 @@ body {
    align-items: left;
 }
 
-.Main header {
-   color: #75DFDA;
+.Main header {  /* headers for each section */
+   color: #015F0A;
+   /*#EDECA0*/
 }
 
 .Archive a {
