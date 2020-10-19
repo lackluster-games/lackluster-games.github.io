@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<title>Getting started with Love2d - part 2</title>
+		<meta charset="UTF-8">
+		<meta content="love2d step by step" name="description">
+	    <meta content="love2d,How to,lua,platformer,game" name="keywords">
+	    <meta content="Chris Nichols" name="author">
+        <link id="css_file" type="text/css" rel="stylesheet" href="../stylesheet/style.css"> 
+  </head>
+  <!--header for page -->
+  <nav id="Page_header" class="Page_header">
+      <header>
+		  <a id="homepage" rel="external" href="https://www.lacklustergames.xyz"><h1>LackLuster Games</h1></a>
+          </header>
+	<p>A most excellent website about amateur programming and game development.</p>
+  </nav>
+
+  <!-- Main section of blog. -->
+  <main  class="Main">
+	<div class="Main_Section">
+      <section id="introduction">
+          <header>
+              <h2>Introduction</h2>
+          </header>
+          <p>
+              This is part 2 of my ongoing journey to make a simple platformer utilizing Love2d.<br>
+              In this part we will utilize basic OOP functionality and also make the enemy character move across the screen.
+          </p>
+      </section>
+      <section id="OOP">
+          <header>
+              <h2>OOP</h2>
+          </header>
+          <p>
+              To improve upon our code, we are going to utilize basic principles of OOP(or as OOP as lua gets.)<br>
+              The first thing we can do to improve our code is make a class for our characters.<br>
+              The first step is to create a CHARACTER class followed by a constructor function:<code>CHARACTER:new()</code><br>
+              In the constructor we make a new character object then assign the variables in that object the correct values.<br>
+              In a file called 'Characters.lua' we add the code:
+          </p>
+          <figure id="Character_1">
+            <img alt="Characters.lua" border="0" data-original-height="190" data-original-width="472" src="https://1.bp.blogspot.com/-nrZJyoNMNs0/X0dPdVRE9hI/AAAAAAAADns/k_84wzrnnRUvEnHXK_pmDQg_HuZEqmKgACLcBGAsYHQ/s0/character_1.png"/>
+              <figcaption>basic Character class</figcaption>
+          </figure>
+          <p>
+              The next step is to make some changes in main.lua<br>
+              When need to let lua know about our character class,so we add <code>require "Characters"</code><br>
+              Next we need to create character objects for the player and enemy, so we change the code in <code>love.load()</code><br>
+              The final bit of change is that we need to use the x and y in these objects therefore we alter the code in <code>love.draw()</code> and <code>love.keypress()</code><br>
+              The updated main.lua code can be seen below:
+          </p>
+          <figure id="main_1">
+            <img alt=""main.lua border="0" data-original-height="208" data-original-width="445" src="https://1.bp.blogspot.com/-52cJplP7m_8/X0dPpVqM6UI/AAAAAAAADnw/RnQS_UacBnE6OD_6HIvFtpDnEdfEkzgVACLcBGAsYHQ/s0/main_code_1.png"/>
+              <figcaption>updated main.lua</figcaption>
+          </figure>
+      </section>
+      <section id="moving_enemy">
+          <header>
+              <h2>Moving the enemy character</h2>
+          </header>
+          <p>
+              Now we can work on getting the enemy character to move left and right.<br>
+              we want him to move right until he reaches the limit set by WIDTH, then have him move left till he hit the edge.then rinse repeat<br>
+              To accomplish this we are going to add a function in Character.lua to handle this. <code>CHARACTER:move()</code>
+              As long as <code>move_r</code> is true then the enemy should move to the right. <br>
+              We employ the same bounds checking as we did in <code>key.press</code> in <a id="part_1" target="_blank" rel="external" href="https://lacklustergames.blogspot.com/2020/08/simple-platformer-part-1.html">part 1.</a><br>
+              When the enemy reaches the right hand boundary, we have to change his direction, that's where <code>move_r = false</code> comes into play.<br>
+              And when the enemy reaches the left hand side, we simply set move_r back to true.<br>
+              You can see the complete <code>CHARACTER:move()</code> function below.
+          </p>
+          <figure id="character_2">
+            <img alt="moving enemy character" border="0" data-original-height="482" data-original-width="640" width="470" src="https://1.bp.blogspot.com/-61qYV_v_NeU/X0dP1lRqFjI/AAAAAAAADn4/Ix6spV8zKCIcGqf6sSQicZCgdXRqWPKkACLcBGAsYHQ/s0/character_2.png"/>
+              <figcaption>function to control enemy movement</figcaption>
+          </figure>
+          <p>
+            We next need to update our code in main.lua<br>
+            We need to use the function <a id="love_update" target="_blank" rel="external" href="https://love2d.org/wiki/love.update"><code>love.update()</code></a>
+            </p>
+            <ul>
+                <li>This function updates at the start of each frame.</li>
+                <li>Put everything which needs to update or run with each frame here.</li>
+            </ul>
+            <p>
+            Inside this function we call the <code>CHARACTER:move()</code> function on the enemy object.<br>
+            You can see our new function in the code below.
+          </p>
+          <figure id="main_2">
+            <img alt="love.update()" border="0" data-original-height="287" data-original-width="445" src="https://1.bp.blogspot.com/-5jsM6jEVyFA/X0dQA3Ki4CI/AAAAAAAADoA/QNCZfEikGrA6aGMhOEDCEtmyRyS3yxOAgCLcBGAsYHQ/s0/main_code_2.png"/>
+              <figcaption>love.update()</figcaption>
+          </figure>
+      </section>
+      <section id="ImproveOOP">
+          <header>
+              <h2>Improving our code further</h2>
+          </header>
+          <p>
+            To further improve our code we can employ encapsulation.<br>
+            We can create an enemy class. The player character has no need for the move function nor move_r variable <br>
+            So we create a class for the enemy object and attach that function and variable to it. <br>
+            We have to modify our Characters.lua file to add the enemy class, constructor function, and a slight change to the move function.<br>
+            We also need to make sure to set the metatable and index of the enemy class so that it is a subclass of the character class. <br>
+            The code we added is below.
+          </p>
+          <figure id="chracter_3">
+            <img alt="enemy class" border="0" data-original-height="622" data-original-width="536" width = "470" src="https://1.bp.blogspot.com/-9xAYdTdt2L4/X0dQN4oYz4I/AAAAAAAADoI/oJhEzt2Tp5oIJUlKlRFPHFCoCjOuHDcHgCLcBGAsYHQ/s0/character_3.png"/>
+              <figcaption>Added enemy class</figcaption>
+          </figure>
+          <p>
+            After adding our enemy class we need to make one slight change to our main.lua<br>
+            just change the type of object for enemy in our <code>love.load</code> function.<br>
+          </p>
+              <figure id="main_3">
+                <img alt="making the enemy object" border="0" data-original-height="120" data-original-width="422" src="https://1.bp.blogspot.com/-ykLq0ldwN5k/X0dQVqoIDcI/AAAAAAAADoQ/Ja1HQkPJSqEKQJrAHzqhhy6dRj7z5jACgCLcBGAsYHQ/s0/main_code_3.png"/>
+                  <figcaption>making enemy object</figcaption>
+              </figure>
+      </section>
+      <section id="conclusion">
+          <header>
+              <h2>Final</h2>
+          </header>
+          <p>
+            We should now have a program which does the same thing as before, but now it is much more organize.<br>
+            More importantly for our needs it can much more easily be expand and added to.<br>
+            Using our class system we can now easily add many new objects and add or remove functions and variables to them.<br>
+            as always, complete code can be found <a id="github" target="_blank" rel="external" href="https://github.com/lackluster-games/simple-platformer-ex-2" >on github.</a>
+          </p>
+          <p>Thank you for sticking around for my part 2. Continue on to part 3 if i have written it yet.</p>
+      </section>
+	</div>
+
+  <!--side bar -->
+  <aside id="Sidebar" class="Sidebar">
+  <div id="Tags" class="Tags">
+	  <div class="Tags_Header">
+	   <header id="Tags_header">
+		<h3>Tags</h3>
+	  </header>
+	</div>
+	<!-- List of tags for articles -->
+	<div class="Tags_List">
+	  <ul id="Tag_list">
+		  <li><a href="./pages/tags/c.html">C</a></li>
+		  <li><a href="./pages/tags/lua.html">Lua</a></li>
+		  <li><a href="./pages/tags/wren.html">Wren</a></li>
+		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
+		  <li><a href="./pages/tags/linux.html">Linux</a></li>
+	  </ul>
+	</div> 
+	<!-- About me section -->
+	<div id="about" class="About">
+		<header id="about_me">
+			<h3>About me</h3>
+		</header>
+		<p>Amatuer programmer.Interests include C, Lua, game dev, and free software.</p>
+	</div>
+	<!-- Contact me section -->
+	<div id="contact" class="Contact">
+		<header id="contact_me">
+			<h3>Contact Me</h3>
+		</header>
+		<a id="email" target="_blank" href="mailto:armoredmoose@gmail.com">Email Me</a>
+		<a id ="github" target="_blank" rel="external" href="https://www.github.com/return5">Github</a>
+	</div>
+  </div>
+  </aside>
+  </main>
+</html>
+
+

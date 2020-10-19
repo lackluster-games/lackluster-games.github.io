@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<title>Wren - A quick introduction</title>
+		<meta charset="UTF-8">
+		<meta content="introduction to Wren programming language" name="description">
+	    <meta content="Wren,introduction,how to,wren" name="keywords">
+	    <meta content="Chris Nichols" name="author">
+        <link id="css_file" type="text/css" rel="stylesheet" href="../stylesheet/style.css"> 
+  </head>
+  <!--header for page -->
+  <nav id="Page_header" class="Page_header">
+      <header>
+		  <a id="homepage" rel="external" href="https://www.lacklustergames.xyz"><h1>LackLuster Games</h1></a>
+          </header>
+	<p>A most excellent website about amateur programming and game development.</p>
+  </nav>
+
+  <!-- Main section of blog. -->
+  <main  class="Main">
+	<div class="Main_Section">
+      <section id="introduction">
+          <header>
+              <h2>Introduction</h2>
+          </header>
+          <p>
+            Welcome to my quick introduction to the <a id="wren" rel="external" target="_blank" href="https://wren.io/">Wren Programming language.</a><br>
+            In this post i will be covering the basics of this interesting little language.<br>
+            I hope by the end you have not only learned a little about Wren, but you have had your interested piqued by it like mine has been. 
+          </p>
+      </section>
+
+      <section id="what_wren"><br>
+      <header>
+          <h2>What is Wren</h2>
+      </header>
+      <p>
+        Wren bills itself as a "Small,fast,classed-based concurrent scripting language."<br>
+        It is a small embeddable scripting language written entirely in C99.<br>
+        It has syntax which is familiar to C.<br>
+        Wren is based abound classes. OOP here we come. 
+      </p>
+    </section>
+        <section id="vars">
+            <br>
+            <header>
+                <h2>Variables</h2>
+            </header>
+            <p>
+                Variables are one of the most basic parts of a programming language.<br>
+                In wren, unlike C, you don't need to declare the type of the variable.<br>
+                Variables are declared using the <em>var</em> keyword.
+            </p>
+            <ul>
+              <li><code><em>var name</em> = <em>value</em> </code>declares a variable <em>name</em> containing <em>value</em></li>
+                <li>var can hold int,floats,bools,strings,lists,objects,functions,etc.</li>
+                <li>vars can then be reassigned from one type to another.</li>
+            </ul>
+            <figure id="variables">
+<img alt="" border="0" data-original-height="467" data-original-width="601" src="https://1.bp.blogspot.com/-u10J46wOARs/X1Vdwfd1GdI/AAAAAAAADvQ/hCAAt6eKhZUWIvL_Q8nnG_4J11ks1_drwCLcBGAsYHQ/s0/vars.png"/>
+                <figcaption>declaring and using variables in Wren.Find the <a id="variable_example" rel="external" target="_blank" href="https://github.com/lackluster-games/wren-examples/blob/master/variables.wren">code here.</a></figcaption>
+        </figure>
+    </section>
+	<section id="lists">
+		<header>
+			<h2>Lists</h2>
+		</header>
+		<p>
+			Creating and using lists in wren is very simple.<br>
+			List are dynamic, meaning they have no fixed size.<br>
+			They can also hold a mixed of different types at once.<br>
+			Lists can also be used as a map or dictionary.
+		</p>
+		<ul>
+			<li>lists start at 0.</li>
+			<li>lists can hold many different types at one.</li>
+			<li>negative index values start at the end of the list and go backwards.</li>
+		</ul>
+		<figure id="list_wren">
+<img alt="" border="0" data-original-height="691" data-original-width="619" src="https://1.bp.blogspot.com/-d2518gWFg7c/X1VdwX5jOTI/AAAAAAAADvI/NxKwG8aXFTce4_ddEIsUfkT6dI1SouBIwCLcBGAsYHQ/s0/list.png"/>
+			<figcaption>Lists in wren.Find the <a id="list_example" rel="external" target="_blank" href="https://github.com/lackluster-games/wren-examples/blob/master/lists.wren">code here.</a></figcaption>
+		</figure>
+		<p>
+			Lists can also be used as a map/dictionary.<br>
+			Keys can be almost anything.strings,variables,numbers,objects,etc.<br>
+			values can also be almost anything.
+		</p>
+		<figure id="map_wren">
+<img alt="" border="0" data-original-height="450" data-original-width="585" src="https://1.bp.blogspot.com/-yT_uAtjqAeA/X1VdwVPCjOI/AAAAAAAADvM/N1h4ykFgSuk_0oGyGGHvnjZTaf49ijTOQCLcBGAsYHQ/s0/maps.png"/>
+			<figcaption>Maps in Wren.Find the <a id="map_example" rel="external" target="_blank" href="https://github.com/lackluster-games/wren-examples/blob/master/lists.wren">code here.</a></figcaption>
+		</figure>
+	</section>
+	<section id="control">
+		<header>
+			<h2>Control flow</h2>
+		</header>
+		<p>
+			Control flow in wren is very similar to C.<br>
+			<em>if</em> statements are near identical.<br>
+			wren uses the same set of operators such as <em> == </em> and <em> &lt;</em><br>
+			The only difference with C you need to watch out for is<b> 0 is evaluated as true.</b>
+		</p>
+		<figure id="control_wren">
+<img alt="" border="0" data-original-height="356" data-original-width="356" src="https://1.bp.blogspot.com/-Z0wIH5pPCGM/X1VdvsCLjVI/AAAAAAAADu8/Ue6DGat51Mw5mXEb9no981HKHeZ4gTHUACLcBGAsYHQ/s0/control.png"/>
+			<figcaption>Control in wren.Find the <a id="control_example" rel="external" target="_blank" href="https://github.com/lackluster-games/wren-examples/blob/master/control.wren">code here.</a></figcaption>
+		</figure>
+		<p>
+			while loops in wren look identical to C while loops. Nothing to explain here<br>
+			for loops are a bit different. You loops over a range or over a list.<br>
+			Lists can be created in the loop or you can use a list which was created prior to the loop.<br>
+			To loop through a map you use <code>mapname.keys</code> or <code>mapname.values</code>.
+		</p>
+		<figure id="loops_wren">
+<img alt="" border="0" data-original-height="679" data-original-width="422" src="https://1.bp.blogspot.com/-7YpZ_KaiOWM/X1Vdv1I9hsI/AAAAAAAADvA/iBxZhNGEcKceTLHeqZi9Ao6n0JkLnVhtgCLcBGAsYHQ/s0/for.png"/>
+			<figcaption>loops in wren.Find the <a id="loop_example" rel="external" target="_blank" href="https://github.com/lackluster-games/wren-examples/blob/master/control.wren">code here.</a></figcaption>
+		</figure>
+	</section>
+	<section id="classes">
+		<header>
+			<h2>Classes and Objects</h2>
+		</header>
+		<p>
+			Wren is based around classes. But luckily wren makes classes very easy.<br>
+			Anyone familiar with most OOP languages will get this stuff very easily.<br>
+			Even without an OOP background it is fairly easy to get.<br>
+		</p>
+		<ul>
+			<li><code>class name {}</code>
+              <ul>
+                <li>make a new class called <em>name</em>.</li>
+              </ul>
+             </li>
+			<li><code>construct new(args)</code>
+              <ul>
+                <li>constructor for the class.</li>
+              </ul>
+            </li>
+			<li><code>_fieldname</code>
+              <ul>
+                <li>declare a field for the class named <em>fieldname</em></li>
+              </ul>
+            </li>
+			<li><code>methodName=(value) {})</code>
+              <ul>
+                <li>declare <em>methodName</em> a setter for the class.</li>
+              </ul>
+            </li>
+			<li><code>methodName {_fieldname}</code>
+              <ul>
+                <li>declare <em>methodName</em> a getter for class.</li>
+              </ul>
+            </li>
+			<li><code>class childclass in parentclass</code>
+              <ul>
+                <li>declare <em>childclass</em> to be a child class of <em>parentclass.</em></li>
+              </ul>
+            </li>
+			<li><code>super</code>
+              <ul>
+                <li>calls the method or field in the parent class.</li>
+              </ul>
+            </li>
+		</ul>
+		<figure id="class_wren">
+<img alt="" border="0" data-original-height="662" data-original-width="1039" src="https://1.bp.blogspot.com/-NTluGM9Kk9s/X1Vdv7YmiBI/AAAAAAAADvE/kUSqL9N2HuAq075WWbvTADyduz3mDZEVgCLcBGAsYHQ/s0/class.png"/>
+			<figcaption>classes in wren.Get the <a id="class_example" rel="external" target="_blank" href="https://github.com/lackluster-games/wren-examples/blob/master/exampleclass.wren">code here.</a></figcaption>
+		</figure>
+	</section>
+	<section id="final">
+		<header>
+			<h2>Final remarks</h2>
+		</header>
+		<p>
+			Thank you for checking out my introduction to Wren. I hope you find the language as interesting as I do.<br>
+			I will be covering embedding wren into C in a separate blog poster later on. Hope to see you there.<br>
+			For those looking to make games, there is a <a id="DOME" rel="external" target="_blank" href="https://domeengine.com/">Game engine</a> using wren.<br>
+			I also suggest you check out the <a id="wren_wiki" rel="external" target="_blank" href="https://github.com/wren-lang/wren/wiki">wren wiki</a> for more info,libraries,projects,and applications.
+		</p>
+	</section>
+	</div>
+
+  <!--side bar -->
+  <aside id="Sidebar" class="Sidebar">
+  <div id="Tags" class="Tags">
+	  <div class="Tags_Header">
+	   <header id="Tags_header">
+		<h3>Tags</h3>
+	  </header>
+	</div>
+	<!-- List of tags for articles -->
+	<div class="Tags_List">
+	  <ul id="Tag_list">
+		  <li><a href="./pages/tags/c.html">C</a></li>
+		  <li><a href="./pages/tags/lua.html">Lua</a></li>
+		  <li><a href="./pages/tags/wren.html">Wren</a></li>
+		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
+		  <li><a href="./pages/tags/linux.html">Linux</a></li>
+	  </ul>
+	</div> 
+	<!-- About me section -->
+	<div id="about" class="About">
+		<header id="about_me">
+			<h3>About me</h3>
+		</header>
+		<p>Amatuer programmer.Interests include C, Lua, game dev, and free software.</p>
+	</div>
+	<!-- Contact me section -->
+	<div id="contact" class="Contact">
+		<header id="contact_me">
+			<h3>Contact Me</h3>
+		</header>
+		<a id="email" target="_blank" href="mailto:armoredmoose@gmail.com">Email Me</a>
+		<a id ="github" target="_blank" rel="external" href="https://www.github.com/return5">Github</a>
+	</div>
+  </div>
+  </aside>
+  </main>
+</html>
+

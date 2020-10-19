@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<title>Getting started with Love2d - part 5</title>
+		<meta charset="UTF-8">
+		<meta content="love2d step by step" name="description">
+	    <meta content="love2d,How to,lua,platformer,game" name="keywords">
+	    <meta content="Chris Nichols" name="author">
+        <link id="css_file" type="text/css" rel="stylesheet" href="../stylesheet/style.css"> 
+  </head>
+  <!--header for page -->
+  <nav id="Page_header" class="Page_header">
+      <header>
+		  <a id="homepage" rel="external" href="https://www.lacklustergames.xyz"><h1>LackLuster Games</h1></a>
+          </header>
+	<p>A most excellent website about amateur programming and game development.</p>
+  </nav>
+
+  <!-- Main section of blog. -->
+  <main  class="Main">
+	<div class="Main_Section">
+      <section id="introduction">
+          <header>
+              <h2>Introduction</h2>
+          </header>
+          <p>
+			  Welcome to part 5 of my <a id="tutorial" target="_blank" rel="external" href="">Love2d tutorial.</a> In this part we are going to add tiles to the game.
+		  </p>
+      </section>
+	  <section id="adding_tiles">
+	  	<header>
+	  		<h2>Adding tiles</h2>
+	  	</header>
+	  	<p>
+			The first thing we need to do is to create three tile pieces. For this i used GIMP and made three simple squares.<br>
+			Next create a directory called <code>images</code> and place the three tile pieces there.
+		</p>
+
+		<div id="Tile_Images" class="side_by_side">
+
+		<figure id="tile1">
+			<img src="images/tile1.png"/>
+			<figcaption>Tile 1</figcaption>
+		</figure>
+
+		<figure id="tile2">
+
+			<img src="images/tile2.png"/>
+			<figcaption>Tile 2</figcaption>
+		</figure>
+
+		<figure id="tile3">
+
+			<img src="images/tile3.png"/>
+			<figcaption>Tile 3</figcaption>
+		</figure>
+		</div>
+
+		<p>
+			The next thing to do is to create a file <code>Tiles.lua</code>.<br>
+			Inside this file, the first thing to do is to create a tile map.<br>
+			This is a 2d array using numbers to represent location of the tiles on the map
+		</p>
+		<ul>
+			<li><em>0</em> represents empty space</li>
+			<li><em>1</em> represents tile 1</li>
+			<li><em>2</em> is tile 2</li>
+			<li><em>3</em> is tile 3</li>
+		</ul>
+
+	  	<figure id="tiles_map" class="figure">
+	  		<figcaption>Tile Map</figcaption>
+	  	</figure>
+		<p>For the next part, the steps are:</p>
+	  	<ol>
+	  		<li>Create an Icon object to hold icons. it should store:
+			  <ul>
+				<li>icon for the tile created with <code>love.graphics.newImage()</code></li>
+				<li>width of icon using <code>getWidth()</code></li>
+				<li>height of icon. Use the function <code>getHeight()</code></li>
+			  </ul>
+            </li>
+	  		<li>Create Icon list.This is a list to hold the Icon objects.</li>
+			<li>Create a function which populates the icon list with the three icons <em>tile1</em>, <em>tile2</em>, and <em>tile3</em>.</li>
+			<li>A function to loop through the tile map and print each tile.
+			  <ul>
+				<li>We use a nested for loop to loop through the tile map.</li>
+				<li>If the tile isn't zero then we print the corresponding icon from <em>icon_list</em> using the number in <em>Tile_Map.</em></li>
+			  </ul>
+			</li>
+	  	</ol>
+		<figure id="tile_icon" class="figure">
+			<figcaption>Tile objects and Tile list</figcaption>
+		</figure>
+	  </section>
+    
+	  <section id="Main">
+	  	<header>
+	  		<h2>Modifying main.lua</h2>
+	  	</header>
+	  	<p>We now need to make a few changes to main. We need to call our new code and we clean up a few things we previously added.</p>
+		<h3>New stuff to add</h3>
+	  	<ul>
+			<li><code>Icon_List:populate</code> we call the populate function in our <code>love.load()</code> function.</li>
+			<li><code>drawTileMap()</code> We add this function to <code>love.draw()</code> in order to draw the tiles on each update.</li>
+		</ul>
+        
+		<h3>Cleaning up older stuff</h3>
+		<p>We now clean up some of our older code to improve our main.lua file.</p>
+		<ul>
+			<li>we change our player construct function to use an image icon using <code>love.graphics.newImage()</code>.</li>
+			<li>we change our enemy construct function to use an image icon directly.</li>
+			<li>we change the values for <em>WIDTH</em> and <em>HEIGHT</em> to accommodate our new tile map.</li>
+		</ul>
+        
+		<figure id="main_lua" class="figure">
+			<figcaption>updated main.lua</figcaption>
+		</figure>
+	  </section>
+
+	  <section id="Character">
+	  	<header>
+	  		<h2>Updating Characters.lua</h2>
+	  	</header>
+		<p>We now make a few changes to our <em>Characters.lua</em> file.</p>
+	  	<ul>
+	  		<li><code>o.icon = icon</code> we set the objects icon to the icon we pass to it. No more calling <code>love.graphics.newImage()</code></li>	  	
+			<li><code>o.y = y - o.oy</code> we adjust the y position to account for the y offset.</li>
+	  	</ul>
+		<figure id="Characters_lua" class="figure">
+			<figcaption>Updated Characters.lua</figcaption>
+		</figure>
+	  </section>
+
+	  <section id="footer">
+	  	<header>
+	  		<h2>Final remarks</h2>
+	  	</header>
+	  	<p>
+			If all went well you should now have tiles printed to the map when you start the game.You can try adjusting the numbers in <em>tile_map</em> to change the map.<br>
+			In the next part we will further develop the game to include collision with the tiles.<br>
+            As always, you can get the complete code <a id="github" rel="external" target="_blank" href="https://github.com/lackluster-games/simple-platformer-ex-5">from github.</a>
+		</p>
+	  </section>
+	</div>
+
+  <!--side bar -->
+  <aside id="Sidebar" class="Sidebar">
+  <div id="Tags" class="Tags">
+	  <div class="Tags_Header">
+	   <header id="Tags_header">
+		<h3>Tags</h3>
+	  </header>
+	</div>
+	<!-- List of tags for articles -->
+	<div class="Tags_List">
+	  <ul id="Tag_list">
+		  <li><a href="./pages/tags/c.html">C</a></li>
+		  <li><a href="./pages/tags/lua.html">Lua</a></li>
+		  <li><a href="./pages/tags/wren.html">Wren</a></li>
+		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
+		  <li><a href="./pages/tags/linux.html">Linux</a></li>
+	  </ul>
+	</div> 
+	<!-- About me section -->
+	<div id="about" class="About">
+		<header id="about_me">
+			<h3>About me</h3>
+		</header>
+		<p>Amatuer programmer.Interests include C, Lua, game dev, and free software.</p>
+	</div>
+	<!-- Contact me section -->
+	<div id="contact" class="Contact">
+		<header id="contact_me">
+			<h3>Contact Me</h3>
+		</header>
+		<a id="email" target="_blank" href="mailto:armoredmoose@gmail.com">Email Me</a>
+		<a id ="github" target="_blank" rel="external" href="https://www.github.com/return5">Github</a>
+	</div>
+  </div>
+  </aside>
+  </main>
+</html>
+
+

@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<title>Getting started with Love2d - part 1</title>
+		<meta charset="UTF-8">
+		<meta content="love2d step by step" name="description">
+	    <meta content="love2d,How to,lua,platformer,game" name="keywords">
+	    <meta content="Chris Nichols" name="author">
+        <link id="css_file" type="text/css" rel="stylesheet" href="../stylesheet/style.css"> 
+  </head>
+  <!--header for page -->
+  <nav id="Page_header" class="Page_header">
+      <header>
+		  <a id="homepage" rel="external" href="https://www.lacklustergames.xyz"><h1>LackLuster Games</h1></a>
+          </header>
+	<p>A most excellent website about amateur programming and game development.</p>
+  </nav>
+
+  <!-- Main section of blog. -->
+  <main  class="Main">
+	<div class="Main_Section">
+      <section id="Introduction">
+          <header>
+              <h2>Introduction</h2>
+          </header>
+        <p>This is the first part of my atempt to learn <a id="love2d_link" target="_blank" rel="external" href="https://love2d.org/">Love2d</a> by creating a small, simple platformer.</p>
+        <p>
+            For this part, i set up a simple program which displays a player and enemies.<br>
+            The player is then given the ability to move around.
+        </p>
+      </section>
+      <section>
+          <header>
+              <h2>Displaying characters to screen.</h2>
+          </header>
+          <P>The first step to this program is creating and displaying the player character and enemies.</P>
+          <p>
+              First thing is that i need to draw a character for the player and a character for the enemies.<br>
+            I opened up GIMP and drew the characters.
+          </p>
+          <p>For the player, i drew a simple stick man.</p>
+          <figure id="player">
+            <img alt="player" border="0" data-original-height="97" data-original-width="47" src="https://1.bp.blogspot.com/-ZqRMzdmlvlI/X0bZqhH0qTI/AAAAAAAADl8/cGf9hexQ5WsP3to05gtx5GwFBAvu3YpPQCLcBGAsYHQ/s0/player.png"/>
+              <figcaption>Player character</figcaption>
+          </figure>
+          <p>For the enemies, i drew a simple goomba looking dude.</p>
+          <figure id="enemy">
+            <img alt="enemy" border="0" data-original-height="66" data-original-width="59" src="https://1.bp.blogspot.com/-_HYIunZgv2g/X0bZukGDksI/AAAAAAAADmA/kX5MDa6VEXELQc910WDZG_pEPHkXIFmIgCLcBGAsYHQ/s0/enemy.png"/>
+              <figcaption>Enemy character</figcaption>
+          </figure>
+          <p>
+              To load the images, the Love2d code needed is <code>love.graphics.newImage("path/to/image")</code> <br>
+           this loads image and allows you to save it to a variable.
+          </p>
+          <p>
+              To display the image, code needed is <code>love.draw()</code><br>
+            and also <code>love.graphics.draw(icon,x,y,r,sx,sy,ox,oy)</code>
+          </p>
+          <h3><a id="love_load" target="_blank" rel="external" href="https://love2d.org/wiki/love.load"><code>love.load()</code></a></h3>
+            <ul>
+                <li>callback function which loads things at the very start of the game.</li>
+            </ul>
+        <h3><a id="love_draw" target="_blank" rel="external" href="https://love2d.org/wiki/love.draw"><code>love.draw()</code></a></h3>
+        <ul>
+          <li>call back function whcih draws to screen every frame.</li>
+       </ul>
+       <h3><a id="love_graphics_draw" target="_blank" rel="external" href="https://love2d.org/wiki/love.graphics.draw"><code>love.graphics.draw(icon,x,y)</code></a></h3>
+       <ul>
+           <li>function which draws a given image to screen.</li>
+           <li>Arguments to function are:
+               <ul>
+                   <li><em>icon</em> 
+                       <ul>
+                           <li>image to draw to screen.</li>
+                           <li>image previously loaded with <code>love.graphics.newImage</code></li>
+                       </ul>
+                   </li>
+                   <li><em>x</em> 
+                       <ul>
+                           <li>x postion of image</li>
+                       </ul>
+                   </li>
+                   <li><em>y</em> 
+                       <ul>
+                           <li>y image of image</li>
+                       </ul>
+                   </li>
+               </ul>
+           </li>
+       </ul>
+       <p> combining all of these together into code, it should look a bit like this.</p>
+       <figure id="code_1">
+         <img alt="code to draw characters to screen" border="0" data-original-height="192" data-original-width="414" src="https://1.bp.blogspot.com/-NYj34rJi584/X0cq6aBuDZI/AAAAAAAADm4/0ketry8X2Y84h7oc1xQiZ1Hjj4LUdnQUACLcBGAsYHQ/s0/code.png"/>
+           <figcaption>code which draws player and enemy to scren</figcaption>
+       </figure>
+       <p>giving us an output which looks like this:</p>
+       <figure id="screen_1">
+         <img alt="two characters drawn to screen" border="0" data-original-height="625" data-original-width="807" width="500" src="https://1.bp.blogspot.com/-XWV7TRNRJY8/X0crHk13ySI/AAAAAAAADm8/yzE2DZ8_UjEDkYY8S5VUmZtzW7uUejf5gCLcBGAsYHQ/s0/screen.png"/>
+           <figcaption>player and enemy together on screen</figcaption>
+       </figure>
+      </section>
+      <section id="move_player">
+          <header>
+              <h2>Adding movement</h2>
+          </header>
+          <p>
+            Now that we can display the player onto the screen, we need to move him about.<br> 
+            To accomplish this, we will need to add a few things to our code.
+          </p>
+          <p>
+              The things needed are a variable for player x, a variable for player y.<br>
+              We also need the function <code>love.keypressed()</code>
+          </p>
+          <ul>
+              <li><code>PLAYER_X</code> and <code>PLAYER_Y</code> holds the location of player's x and y co-ordinates.</li>
+              <li><code>love.keypresed()</code> function which handles keyboard input</li>
+          </ul>
+          <p>
+              We start by creating the global variables for player position. 
+              We next need to change the code in <code>love.draw()</code> to use these variables.
+          </p>
+          <figure id="updated_draw">
+            <img alt="updated load and draw functions" border="0" data-original-height="222" data-original-width="438" src="https://1.bp.blogspot.com/-g4GsM9xKMjU/X0cr2Pua8nI/AAAAAAAADnI/-voqTrRadjsqivKQdzTEEvhA5WDPSiZ5gCLcBGAsYHQ/s0/load_draw.png"/>
+              <figcaption>updated load and draw functions.</figcaption>
+          </figure>
+          <p>
+              the last thing needed is to set up the <code>love.keypressed()</code> function<br> 
+              We used the standard 'wasd' for movement.<br>
+              We update the global variable for player x and player y when the corresponding key is pressed.<br>
+          </p>
+          <p>keypress function should look like:</p>
+          <figure id="keypress">
+            <img alt="keypress function" border="0" data-original-height="197" data-original-width="313" src="https://1.bp.blogspot.com/-OtCia-dPv_Y/X0csg0WO63I/AAAAAAAADnU/CNhvafpUUykz7ykd5OpFLqwiRtq4xJsDQCLcBGAsYHQ/s0/keypress_1.png"/>
+              <figcaption>player can now move around</figcaption>
+          </figure>
+          <p>
+              We next need to set boundary for the player. We don't want the player to wander off screen.<br>
+              To accomplish this, we set up two global variables: <code>HEIGHT</code> and <code>WIDTH</code><br>
+              HEIGHT controls where the bottom of the screen is, and WIDTH controls where the right hand edge of screen is.<br>
+              All we have to do is add an if statement to each of the movement keys checking if player is out of bounds.<br>
+             The completed code should look like this:
+          </p>
+          <figure id="updated_keypress">
+            <img alt="final code" border="0" data-original-height="655" data-original-width="444" src="https://1.bp.blogspot.com/-SqZo_g3FYp8/X0ctRCqiB-I/AAAAAAAADng/wJLbPJPDMugE7Xmf6GBr5hkuP62SMkE2QCLcBGAsYHQ/s0/complete_code.png"/>
+              <figcaption>player can move around but can't go out of bounds.</figcaption>
+          </figure>
+          <p> full code can be found on <a id="github" target="_blank" rel="external" href="https://github.com/lackluster-games/simple-platformer-ex1/blob/master/main.lua">github</a></p>
+      </section>
+      <section id="sign_off">
+          <header>
+              <h2>Conclusion</h2>
+          </header>
+          <p> We should now have a simple program which draws characters to the screen and allows the player to move around, but not to move out of bounds.We now know how
+              to draw characters to screen, take in keyboard input, and use this keyboard input to update to change things in game.</p>
+          <p> Check back for part 2 of this on going walk through of building a simple platformer using Love2d.</p>
+      </section>
+	</div>
+
+  <!--side bar -->
+  <aside id="Sidebar" class="Sidebar">
+  <div id="Tags" class="Tags">
+	  <div class="Tags_Header">
+	   <header id="Tags_header">
+		<h3>Tags</h3>
+	  </header>
+	</div>
+	<!-- List of tags for articles -->
+	<div class="Tags_List">
+	  <ul id="Tag_list">
+		  <li><a href="./pages/tags/c.html">C</a></li>
+		  <li><a href="./pages/tags/lua.html">Lua</a></li>
+		  <li><a href="./pages/tags/wren.html">Wren</a></li>
+		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
+		  <li><a href="./pages/tags/linux.html">Linux</a></li>
+	  </ul>
+	</div> 
+	<!-- About me section -->
+	<div id="about" class="About">
+		<header id="about_me">
+			<h3>About me</h3>
+		</header>
+		<p>Amatuer programmer.Interests include C, Lua, game dev, and free software.</p>
+	</div>
+	<!-- Contact me section -->
+	<div id="contact" class="Contact">
+		<header id="contact_me">
+			<h3>Contact Me</h3>
+		</header>
+		<a id="email" target="_blank" href="mailto:armoredmoose@gmail.com">Email Me</a>
+		<a id ="github" target="_blank" rel="external" href="https://www.github.com/return5">Github</a>
+	</div>
+  </div>
+  </aside>
+  </main>
+</html>
+

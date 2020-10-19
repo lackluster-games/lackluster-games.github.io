@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+  <head>
+	<title>Getting started with the find command.</title>
+		<meta charset="UTF-8">
+		<meta content="using the find command" name="description">
+	    <meta content="find, unix,how to,introduction" name="keywords">
+	    <meta content="Chris Nichols" name="author">
+        <link id="css_file" type="text/css" rel="stylesheet" href="../stylesheet/style.css"> 
+  </head>
+  <nav id="Page_header" class="Page_header">
+      <header>
+		  <a id="homepage" rel="external" href="https://www.lacklustergames.xyz"><h1>LackLuster Games</h1></a>
+          </header>
+	<p>A most excellent website about amateur programming and game development.</p>
+  </nav>
+
+  <!-- Main section of blog. -->
+  <main  class="Main">
+	<div class="Main_Section">
+      <section id="introduction">
+          <header>
+              <h2>Introduction</h2>
+          </header>
+          <p>
+			  In this article i will walk you through a simple introduction to the unix command <code><em>find</em></code>.<br>
+			  I will cover the basic use of it and the options/flags that I find myself using the most often and which I think will be the most use to a new user.<br>
+			  So let's get started teach you how to use find.
+		  </p>
+      </section>
+	<section id="find">
+		<header>
+			<h2>Find</h2>
+		</header>
+		<p>
+			The basic use of find is to find files and directories. It can be used as a simple search or using the options to it, make it a very complex search. <br>
+			As with all unix commands, I highly recommend reading the manual page for it. It will teach you everything you need to know and then some about using find.<br>
+			The first thing to learn about find is that simply typing <code>find</code> with no arguments will list all files and directories contained inside the current directory.<br>
+		</p>
+		<figure id="find_cmd">
+          <img alt="" border="0" data-original-height="392" data-original-width="219" src="https://1.bp.blogspot.com/-Pu60cC7-b6E/X4kedBI7Z3I/AAAAAAAADxQ/Y4nRZe2Na8kqRV4FqYSnTuTQgB7d730KQCLcBGAsYHQ/s0/find.png"/>
+			<figcaption>find with no arguments or options.</figcaption>
+		</figure>
+		<p>
+			From the printout you can see that find prints the contents of the current directory and descends down into all sub-directories as well.<br>
+			For this example I have a parent directory "test" and inside that I have 6 files.<br>
+			I also have a subdirectory named "level_2" which also contains 6 files.<br>
+			Inside of "level_2" is a subdirectory "level_3" which contains 6 more files. 
+		</p>
+	</section>
+	<section id="type">
+		<header>
+			<h2>-type</h2>
+		</header>
+		<p>
+			passing <code>-type</code> to find allows you to specify a type of file you are looking for.<br>
+			You can specify the type by passing a single character representing the type.<br>
+			the two which I find myself using the most are:
+		</p>
+		<ul>
+			<li><code>f</code> specifies that you are looking for a regular file.</li>
+			<li><code>d</code> specifies that you are looking for a directory.</li>
+		</ul>
+		<p>Let's look at an example of each.</p>
+		<figure id="type_f_option">
+   			<img alt="" border="0" data-original-height="325" data-original-width="329" src="https://1.bp.blogspot.com/-vSWKZkVVB2g/X4kegmdtCJI/AAAAAAAADxw/oCLuVAmFFHYlME_0i0JIDaq4KWAlNMsKQCLcBGAsYHQ/s0/type_f.png"/>
+			<figcaption>find using the <code>-type f</code> option.</figcaption>
+		</figure>
+	<p>here we tell find that we want to search based on type and that the type we are looking for is a regular file.</p>
+	<figure id="type_d_option">       
+		<img alt="" border="0" data-original-height="69" data-original-width="208" src="https://1.bp.blogspot.com/-Gl_v2aAdeTU/X4kegNUKtnI/AAAAAAAADxs/mbKh0LQb-w0W_0fjnT-KCC1s3YMlQu6-ACLcBGAsYHQ/s0/type_d.png"/>
+		<figcaption>find using the <code>type -d</code> option.</figcaption>
+	</figure>
+	<p>here we tell find that we want to search for directories.</p>
+	</section>
+	<section id="name">
+		<header>
+			<h2>-name</h2>
+		</header>
+		<p>
+			<code>-name</code> option allows you to search using a case sensitive regex pattern.<br>
+			the pattern is applied to the name of the file, and if a match is found, the file name is printed to screen.<br>
+			Below you can see an example of a case sensitive search for any file with the name "file".
+		</p>
+		<figure id="name_option">
+			<img alt="" border="0" data-original-height="224" data-original-width="263" src="https://1.bp.blogspot.com/-1xSKxcJHHIA/X4kefJQCJoI/AAAAAAAADxk/pZlpw2g-u3EyBudnB7g1OfntWDOrRiWSwCLcBGAsYHQ/s0/name_file.png"/>
+			<figcaption>find using the <code>-name</code> option.</figcaption>
+		</figure>
+	</section>
+	<section id="iname">
+		<header>
+			<h2>-iname</h2>
+		</header>
+		<p>
+			<code>-iname</code> is exactly like <code>-name</code> except that it is case insensitive.<br>
+			Below you can see and example of a case insensitive search for "file".<br>
+			This search finds both "file" and "File".
+		</p>
+		<figure id="iname_option">
+         <img alt="" border="0" data-original-height="321" data-original-width="235" src="https://1.bp.blogspot.com/-oHNcSlF-N_Q/X4klsEieWuI/AAAAAAAADyM/o8NmGwvzomgZFq9fAV-aUUoXORJLxXL8gCLcBGAsYHQ/s0/iname.png"/>
+			<figcaption>find using the <code>-iname</code> option.</figcaption>
+		</figure>
+	</section>
+	<section id="chaining">
+		<header>
+			<h2>Chaining options</h2>
+		</header>
+		<p>
+			You can chain together multiple options with find to further refine your search.<br>
+			In the example below we combine <code>-type d</code> with <code>-name "*2"</code>.<br>
+			This searches for directories then applies a case sensitive search for names ending in "2".
+		</p>
+		<figure id="chain_options">
+			<img alt="" border="0" data-original-height="31" data-original-width="274" src="https://1.bp.blogspot.com/-racqP58989Y/X4kec5b9JGI/AAAAAAAADxM/yGy2dVaKRJQdqqO9m6xi73LYET9W0MhDwCLcBGAsYHQ/s0/chaining.png"/>
+			<figcaption>using find with multiple options.</figcaption>
+		</figure>
+	</section>
+	<section id="depth">
+		<header>
+			<h2>Controlling depth</h2>
+		</header>
+		<p>
+			You can control how deep or shallow a search is by using two options.
+		</p>
+		<ul>
+			<li><code>-maxdepth</code> controls max number of subdirectories to descend down into.</li>
+			<li><code>-mindepth</code> tells find not to search in any directory above this level.</li>
+		</ul>
+		<p>
+			Below you can see a few different levels of -maxdepth from 1 to 3.
+		</p>
+		<div id="maxdepth_pics" class="side_by_side">
+			<figure id="maxdepth1">
+				<img alt="" border="0" data-original-height="153" data-original-width="229" src="https://1.bp.blogspot.com/-iUeZzWMQao0/X4kedVui5vI/AAAAAAAADxU/pvnhHlCc79ozykSrZZmLUmAuGR2f4aNFgCLcBGAsYHQ/s0/maxdepth_1.png"/>
+				<figcaption>maxdepth 1</figcaption>
+			</figure>
+			<figure id="maxdepth2">
+				<img alt="" border="0" data-original-height="271" data-original-width="216" src="https://1.bp.blogspot.com/-fwa5VHRqApM/X4kedintP2I/AAAAAAAADxY/vBY2RJeaWCICsio99FidZdzbWmMSnq0zACLcBGAsYHQ/s0/maxdepth_2.png"/>
+				<figcaption>maxdepth 2</figcaption>
+			</figure>
+			<figure id="maxdepth3">
+				<img alt="" border="0" data-original-height="372" data-original-width="241" src="https://1.bp.blogspot.com/-wJz2C26LjXg/X4keeGkeHtI/AAAAAAAADxc/CPeGkpKIYUcLSIxP1ZS44NMfE6WkJBQaQCLcBGAsYHQ/s0/maxdepth_3.png"/>
+				<figcaption>maxdepth 3</figcaption>
+			</figure>
+		</div>
+      <p>
+        As you can see, -maxdepth 1 search only in current directory<br>
+        -maxdepth 2 searches this directory and one level below it.<br>
+        -maxdepoth 3 searches this directory and up to two levels below it<br>
+		The following examples below shows using two levels of -mindepth.
+      </p>
+		<figure id="mindepth">
+			<img alt="" border="0" data-original-height="355" data-original-width="251" src="https://1.bp.blogspot.com/-DNPQ1JW0cUU/X4keeiLTEPI/AAAAAAAADxg/mkwXaH-VuWwotIqhyISo7wCzXnajYy5eQCLcBGAsYHQ/s0/min_depth.png"/>
+			<figcaption>using <code>-mindepth</code> with find.</figcaption>
+		</figure>
+      <p>
+        -mindepth 2 searches every directory at least one level below the current directory<br>
+        -mindepth 3 searches every directory at least two levels below the current directory.
+      </p>
+	</section>
+	<section id="delete">
+		<header>
+			<h2>-delete</h2>
+		</header>
+		<p>
+			The option <code>-delete</code> deletes any files which match the search criteria.<br>
+			The example below shows using find to delete all files beginning with "F".<br>
+			This example also shows chaining together options, in this case <code>-name</code> and <code>-delete</code>.
+		</p>
+		<figure id="del_option">
+          <img alt="" border="0" data-original-height="305" data-original-width="283" src="https://1.bp.blogspot.com/-1FwCBiW7KxU/X4kecsWZu5I/AAAAAAAADxE/OfcY76UQnpYr7Nq_W_MDFUd4IHXcViCtQCLcBGAsYHQ/s0/delete.png"/>
+			<figcaption>using option with find.</figcaption>
+		</figure>
+      <p>As you can see, we have deleted all files which start with a captial 'F'.</p>
+	</section>
+	<section id="exec">
+		<header>
+			<h2>-exec</h2>
+		</header>
+		<p>
+			The option <code>-exec</code> allows you to pass each found file to another unix command or program.<br>
+			It passes each file individually one at a time to the command or program to be executed.<br>
+			Two things to note about the -exec command are:
+		</p>
+		<ul>
+			<li><code>{}</code> is the file which was found in the search.</li>
+			<li><code>\;</code> The '\' escapes the semi-colon so that find knows it isn't part of the -exec command.
+				<ul>
+					<li>the semi-colon is needed in order to tell find when the exec command ends.</li>
+				</ul>
+			</li>
+		</ul>
+		<figure id="exec_option">
+          <img alt="" border="0" data-original-height="70" data-original-width="507" src="https://1.bp.blogspot.com/-r5kamXmvX8E/X4kec_0SswI/AAAAAAAADxI/vJlFJzR5NdsNBdtF1WpOf9ZVIuky8VuHQCLcBGAsYHQ/s0/exec.png"/>
+			<figcaption>using the <code>-exec</code> option with find.</figcaption>
+		</figure>
+		<p> 
+			In the above example we search for all files staring with "F" (which are all in the level_2 directory) and then send them to the <code>mv</code> command.<br>
+			Here we are moving each found file to the directory "test".<br>
+			We can verify that it worked with the output from <code>ls</code>.
+		<p>
+	</section>
+	<section id="ok">
+		<header>
+			<h2>-ok</h2>
+		</header>
+		<p>
+			The <code>-ok</code> command works exactly like -exec but it first prompts you each time before executing the command for each found file.
+		</p>
+		<figure id="ok_option">
+			<img alt="" border="0" data-original-height="118" data-original-width="431" src="https://1.bp.blogspot.com/-SHo3gk236dI/X4kefqltVqI/AAAAAAAADxo/sYF6G-hfANs0fCdY_GukLhnhs4yb-_b2gCLcBGAsYHQ/s0/ok.png"/>
+			<figcaption>using <code>-ok</code> option with find.</figcaption>
+		</figure>
+
+		<p>We search for then move all files starting with "F" as with the -exec option, but this time it prompts us each time before moving each file.<p>
+	</section>
+	<section id="end">
+		<header>
+			<h2>final remarks</h2>
+		</header>
+		<p>
+			I hope this tutorial was helpful to you in learning the basics of find.<br>
+			It is a very useful and powerful command on any *nix system. I hope that you try it out and check out the man page for it<br>
+			find has a ton more options than what I covered, some of them quite complex and powerful, so do please look into the other options.<br>
+			Also remember that being a unix command, you can easily loop over the output using a while loop or pipe it into xargs to do some powerful stuff with it.<br>
+			Thank you for checking out this tutorial. Please remember to check back for other tutorials on this blog.
+		</p>
+      </section>
+	</div>
+
+  <!--side bar -->
+  <aside id="Sidebar" class="Sidebar">
+  <div id="Tags" class="Tags">
+	  <div class="Tags_Header">
+	   <header id="Tags_header">
+		<h3>Tags</h3>
+	  </header>
+	</div>
+	<!-- List of tags for articles -->
+	<div class="Tags_List">
+	  <ul id="Tag_list">
+		  <li><a href="./pages/tags/c.html">C</a></li>
+		  <li><a href="./pages/tags/lua.html">Lua</a></li>
+		  <li><a href="./pages/tags/wren.html">Wren</a></li>
+		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
+		  <li><a href="./pages/tags/linux.html">Linux</a></li>
+	  </ul>
+	</div> 
+	<!-- About me section -->
+	<div id="about" class="About">
+		<header id="about_me">
+			<h3>About me</h3>
+		</header>
+		<p>Amatuer programmer.Interests include C, Lua, game dev, and free software.</p>
+	</div>
+	<!-- Contact me section -->
+	<div id="contact" class="Contact">
+		<header id="contact_me">
+			<h3>Contact Me</h3>
+		</header>
+		<a id="email" target="_blank" href="mailto:armoredmoose@gmail.com">Email Me</a>
+		<a id ="github" target="_blank" rel="external" href="https://www.github.com/return5">Github</a>
+	</div>
+  </div>
+  </aside>
+  </main>
+</html>
+

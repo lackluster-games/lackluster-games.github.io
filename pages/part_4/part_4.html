@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<title>Getting started with Love2d - part 4</title>
+		<meta charset="UTF-8">
+		<meta content="love2d step by step" name="description">
+	    <meta content="love2d,How to,lua,platformer,game" name="keywords">
+	    <meta content="Chris Nichols" name="author">
+        <link id="css_file" type="text/css" rel="stylesheet" href="../stylesheet/style.css"> 
+  </head>
+  <!--header for page -->
+  <nav id="Page_header" class="Page_header">
+      <header>
+		  <a id="homepage" rel="external" href="https://www.lacklustergames.xyz"><h1>LackLuster Games</h1></a>
+          </header>
+	<p>A most excellent website about amateur programming and game development.</p>
+  </nav>
+
+  <!-- Main section of blog. -->
+  <main  class="Main">
+	<div class="Main_Section">
+      <section id="introduction">
+          <header>
+              <h2>Introduction</h2>
+          </header>
+            <p>
+                Welcome to part 4 of my ongoing series about game dev using Love2d.<br>
+                In this part we will expand upon the work we did previously.<br>
+                First we will slightly alter how we draw images to screen.<br>
+                Then we will better organize our code to move the player.<br>
+                Lastly we will add the ability to run into enemies and destroy them.
+            </p>
+      </section>
+      <section id="offset">
+          <header>
+              <h2>Working with offsets</h2>
+          </header>
+          <p>
+            The typical way that love2d draws an image onto screen is to use x,y coordinates.<br>
+            So far the way we have been using them, love2d has been using x,y as the upper left corner of the image.<br>
+            We would like to change this so that x,y refer to the center of the image.<br>
+            We will place the offsets in two variables in <code>CHARACTER</code> class as <code>ox</code>, and <code>oy</code>.<br>
+            We will set the value to these variables using the love2d functions <code>getHeight()</code> and <code>getWidth()</code>
+          </p>
+          <figure id="character_2">
+            <img alt="Updated CHRACTER constructor" data-original-height="175" data-original-width="389" src="./images/character_2.png"/>
+              <figcaption>New variable in <code>CHARACTER</code> class</figcaption>
+          </figure>
+          <p>
+            We will now update our draw function to accommodate these offsets.<br>
+            As you can see from the image below, <code>.draw()</code> now has a bunch of new arguments.<br>
+            If you want to know what each of them are, please see the <a id="love2d_ref" rel="external" target="blank" href="https://love2d.org/wiki/love.graphics.draw">Love2d reference</a>
+          </p>
+          <figure id="character_3">
+            <img alt="udated draw function" border="0" data-original-height="64" data-original-width="589" src="./images/character_3.png"/>
+              <figcaption>Updated draw function</figcaption>
+          </figure>
+          <p>
+            You will now see that the program draws the player character a bit off screen.<br>
+            You can fix this by adjusting the x and y values you use when creating him.<br>
+            You will also notice that our bounds checking is slightly off now. Don't worry, we will soon fix this.<br>
+          </p>
+      </section>
+      <section id="movement">
+          <header>
+              <h2>Improving movement</h2>
+          </header>
+          <p>
+            The first thing we are going to do is break up our current keypress function into smaller functions.<br>
+            We are going to create one function per direction: up,down,left,and right.<br>
+            Since no other object in the game uses these functions, we make them belong to <code>PLAYER</code> class.<br>
+            We place these functions in our <em>Characters.lua</em> file.
+          </p>
+          <figure id="character_1">
+            <img alt="new player movement functions" border="0" data-original-height="430" data-original-width="330" src="./images/character_1.png"/>
+              <figcaption>Player movement functions</figcaption>
+          </figure>
+          <p>
+            We can now clean up our keypress function.<br>
+            We can simply call the corresponding function to move player that direction.
+          </p>
+          <figure id="main_1">
+            <img alt="Updated keypress function" border="0" data-original-height="176" data-original-width="290" src="./images/main_1.png"/>
+            <figcaption>Updated keypress function</figcaption>
+          </figure>
+          <p>
+            If you test it out, this now works just as before, but much better organized.<br>
+            But wouldn't it be nice to be able to move around by holding down the key?<br>
+            I think it would, so we can replace our <code>love.keypress()</code> by a new function.<br>
+            We make our <code>keyboardInput()</code> and use the function <code>love.keyboard.isDown("key")</code>.<br>
+            After making <code>keyboardInput</code> we call it at the end of <code>love.update()</code>
+          </p>
+          <figure id="main_2">
+            <img alt="keyboardInput function" border="0" data-original-height="310" data-original-width="370" src="./images/main_2.png"/>
+              <figcaption>our new keyboard input function</figcaption>
+          </figure>
+          <p>
+              You should now be able to move the player character around by holding down a movement key.<br>
+              The speed at which he moves is governed by the <code>speed</code> variable inside of <code>CHARACTER</code> class.<br>
+              We next need to slightly adjust our enemy move function to account for the offsets.<br>
+              Once that is done you should now see the game working as it should.
+            </p>
+            <figure id="character_1a">
+              <img alt="Updated enemy move function" border="0" data-original-height="258" data-original-width="371" src="./images/character_1a.png"/>
+                <figcaption>Updated <code>ENEMY:move()</code></figcaption>
+            </figure>
+    </section>
+    <section id="collision">
+        <header>
+            <h2>Collision detection</h2>
+        </header>
+        <p>
+            We are now going to add the ability to collide into an enemy.<br>
+            When player character collides into an enemy, the enemy is removed from the game.<br>
+            We need to check for four conditions to account for a collision:
+        </p>
+        <ul>
+            <li>player's head is above the enemy's feet.</li>
+            <li>The player's feet are below the enemy's head.</li>
+            <li>Player's left side is to the left of the enemy's right side.</li>
+            <li>Player's right side is to the right of the enemy's left side.</li>
+        </ul>
+        <p>
+            If you walk through these four steps, maybe even draw out a diagram, you will see that it accounts for a collision between the player and enemy.<br>
+            We will add a function in <em>Character.lua</em> to account for this.<br>
+            We make this function belong to <code>ENEMY</code> class. <br>
+            You can see that it checks for a collision and returns true if player and enemy collide.
+        </p>
+        <figure id="character_4">
+          <img alt="function which checks for a collision with an enemy" border="0" data-original-height="133" data-original-width="857" width = "660" src="./images/character_4.png"/>
+            <figcaption>function to check for a collision</figcaption>
+        </figure>
+        <p>
+            Now that we can check for a collision between a player and a single enemy, we need to expand this for all enemies.<br>
+            We accomplish this by writing a function in <em>main.lua</em> to loop through <code>ENEMY_LIST</code>.<br>
+            This functions checks for collision with the player on each and every enemy in <code>ENEMY_LIST</code>.<br>
+            If a collision is detected with an enemy, we remove that enemy object from <code>ENEMY_LIST</code>.<br>
+            Once we have this function, we need to call it at the bottom of our <code>love.update()</code> function.
+        </p>
+        <figure id="main_3">
+          <img alt="Checking each enemy for a collision" border="0" data-original-height="114" data-original-width="363" src="./images/main_3.png"/>
+            <figcaption>function to check all enemies for a collision</figcaption>
+        </figure>
+        <p>
+            With everything in place we should now be able to touch an enemy and have them removed from the game.
+        </p>
+      <figure id="gif">
+        <img alt="" border="0" data-original-height="101" data-original-width="190" src="./images/ezgif-7-c00447419235.gif"/>
+      </figure>
+    </section>
+    <section id="final">
+        <header>
+            <h2>Final remarks</h2>
+        </header>
+        <p>
+            Thank you for checking our part 4 of my series on Love2d.<br>
+            Please check back for part 5 of this series.<br>
+            As always, you can get the complete code <a id="github" rel="external" target="_blank" href="https://github.com/lackluster-games/simple-platformer-ex-4">from github.</a>
+        </p>
+    </section>
+	</div>
+
+  <!--side bar -->
+  <aside id="Sidebar" class="Sidebar">
+  <div id="Tags" class="Tags">
+	  <div class="Tags_Header">
+	   <header id="Tags_header">
+		<h3>Tags</h3>
+	  </header>
+	</div>
+	<!-- List of tags for articles -->
+	<div class="Tags_List">
+	  <ul id="Tag_list">
+		  <li><a href="./pages/tags/c.html">C</a></li>
+		  <li><a href="./pages/tags/lua.html">Lua</a></li>
+		  <li><a href="./pages/tags/wren.html">Wren</a></li>
+		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
+		  <li><a href="./pages/tags/linux.html">Linux</a></li>
+	  </ul>
+	</div> 
+	<!-- About me section -->
+	<div id="about" class="About">
+		<header id="about_me">
+			<h3>About me</h3>
+		</header>
+		<p>Amatuer programmer.Interests include C, Lua, game dev, and free software.</p>
+	</div>
+	<!-- Contact me section -->
+	<div id="contact" class="Contact">
+		<header id="contact_me">
+			<h3>Contact Me</h3>
+		</header>
+		<a id="email" target="_blank" href="mailto:armoredmoose@gmail.com">Email Me</a>
+		<a id ="github" target="_blank" rel="external" href="https://www.github.com/return5">Github</a>
+	</div>
+  </div>
+  </aside>
+  </main>
+</html>
+
+

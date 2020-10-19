@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	<title>Quick start guide to lua</title>
+		<meta charset="UTF-8">
+		<meta content="lua  guick start" name="description">
+	    <meta content="How to,lua,guide" name="keywords">
+	    <meta content="Chris Nichols" name="author">
+        <link id="css_file" type="text/css" rel="stylesheet" href="../stylesheet/style.css"> 
+  </head>
+  <!--header for page -->
+  <nav id="Page_header" class="Page_header">
+      <header>
+		  <a id="homepage" rel="external" href="https://www.lacklustergames.xyz"><h1>LackLuster Games</h1></a>
+          </header>
+	<p>A most excellent website about amateur programming and game development.</p>
+  </nav>
+
+  <!-- Main section of blog. -->
+  <main  class="Main">
+	<div class="Main_Section">
+      <section id="introduction">
+          <header>
+              <h2>Introduction</h2>
+          </header>
+          <p>
+            This is my quick and basic introduction to lua.<br>
+            In this guide i will quickly walk you through the basics of lua.<br>
+          </p>
+      </section>
+
+      <section id="what_is_not">
+          <header>
+              <h3>What this guide is not</h3>
+          </header>
+          <p>
+            This guide is not a step by step introduction to programming.<br>
+            Nor will this guide cover a bunch of computer science concepts.<br>
+          </p>
+      </section>
+
+      <section id="what_is">
+          <header>
+              <h3>What this guide is</h3>
+          </header>
+          <p>
+            This guide assume you have some understating of programming and computer science.<br>
+            This guide is simply a quick introduction to the basics of lua.<br>
+            This guide assumes you are familiar with basic programming and want to cover the basics of lua.<br>
+          </p>
+      </section>
+
+      <section id="install">
+          <header>
+              <h3>Install basics</h3>
+          </header>
+          <p>
+            This guide wont go into the details of installation and running a lua program.<br>
+            That information is pretty well conveyed by the <a id="lua_install" rel="external" target="_blank" href="https://www.lua.org/">lua website.</a> <br>
+            once you have lua set up you can continue the rest of this guide.
+          </p>
+      </section>
+
+    <section id="basics">
+        <header>
+            <h2>The Basics of variables</h2>
+        </header>
+        <p>
+            The very first thing to learn is how lua handles variables.<br>
+            With lua there is no type declarations or even a <code>var</code> keyword.<br>
+            To use a variable, simple use the variable name and assign it a value, as seen in example below<br>
+            You can find all the example code used in this guide over <a id="github" rel="external" target="_blank" href="https://github.com/lackluster-games/lua-quick-start-guide">on github.</a>
+        </p>
+            <figure id="vars">
+              <img alt="Variables in lua" border="0" data-original-height="174" data-original-width="310" src="https://1.bp.blogspot.com/-xnI6e0pKrHE/X0nq6rrVsgI/AAAAAAAADss/3r09eyf0r-o-nQT_WDOgOGd2Gf6PkUywwCLcBGAsYHQ/s0/variables.png"/>
+                <figcaption>Example of using variables in lua</figcaption>
+            </figure>
+            <p>
+                Variables can be assigned to any type of data, int, floats, strings, etc.<br>
+                Variables can also be reassigned to a different type.<br>
+                For example, a variable holding a string can then be assigned to hold an int.<br>
+                By default all variables are global. To make a variable local, use the <code>local</code> keyword.
+            </p>
+            <figure id="local">
+              <img alt="Local variables in lua" border="0" data-original-height="68" data-original-width="277" src="https://1.bp.blogspot.com/-ccZ0SZdk_PY/X0nq3GlMZKI/AAAAAAAADsE/9ziTKVg7u0I5jeNyWPK_XivBMcHfSJIrQCLcBGAsYHQ/s0/local.png"/>
+                <figcaption>local variables.</figcaption>
+            </figure>
+    </section>
+
+    <section id="functions">
+        <header>
+            <h2>Functions</h2>
+        </header>
+        <p>
+            Functions are declared by using the <code>function</code> keyword.<br>
+            Return types are not declared as they are in languages such as C.<br>
+            Functions are closed with the <code>end</code> keyword.
+        <p>
+            <figure id="function_examples">
+              <img alt="functions in lua" border="0" data-original-height="465" data-original-width="453" src="https://1.bp.blogspot.com/-CocLuffIIho/X0nq2_A4xiI/AAAAAAAADsA/5aefH4PTbtwh0WoLc_RXZ_irk5thPeBFwCLcBGAsYHQ/s0/functions.png"/>
+                <figcaption>functions in lua.</figcaption>
+            </figure>
+            <p>
+                Functions declared local have their scope limited the same as variables.<br>
+                Local functions can only be called below them in the file.<br>
+                Local functions can be quicker than non local function.
+            </p>
+            <p>
+                Functions can return no data, a single variable, or many variables. <br>
+                Functions return multiple items as separate variables.<br>
+                If you try to assign more variables to a function than it returns, the excess variables are assigned the value <code>nil</code>
+            </p>
+    </section>
+
+    <section id="table">
+        <header>
+            <h2>tables</h2>
+        </header>
+        <p>
+            Tables are lua's storage device.<br>
+            Understanding tables is a very big key to being good at lua.<br>
+            Tables can be used as dynamic arrays are used in other languages.<br>
+            Tables can also be used like associative arrays or dictionaries.<br>
+            You can store almost anything you want in a table,and aren't limited to a single data type per table.<br>
+            One thing to keep in mind: <em><strong>Tables start at 1 not 0.</strong></em>
+        </p>
+        <figure id="table_examples">
+              <img alt="tables in lua" border="0" data-original-height="358" data-original-width="398" src="https://1.bp.blogspot.com/-uQIau9fybIE/X0nq5xIdYhI/AAAAAAAADsc/ADoFhU0LORMfHczt9H7kdsXf-70n5_F-wCLcBGAsYHQ/s0/tables.png"/>
+            <figcaption>Tables in lua.</figcaption>
+        </figure>
+
+    <section id="inserting_tables">
+        <header>
+            <h3>Inserting data into tables</h3>
+        </header>
+      <figure id="table_insert">
+              <img alt="inserting elements into tables" border="0" data-original-height="342" data-original-width="702" width="650" src="https://1.bp.blogspot.com/-vwhI2R_7lsc/X0nq5PRBB_I/AAAAAAAADsY/Rp86W0fQK9En707HcJEvvE6DbJgre5xggCLcBGAsYHQ/s0/table_insert.png"/>
+            <figcaption>Inserting elements into a table.</figcaption>
+        </figure>
+        <p>
+            There are two main ways to insert data into an array: using an index and using <code>table.insert()</code><br>
+            There are two forms of <code>table.insert()</code>:
+        </p>
+        <ul>
+            <li><code>table.insert(mytable,element)</code>
+                <ul>
+                    <li>This will place the element at the end of the given table.</li>
+                </ul>
+            </li>
+            <li><code>table.insert(mytable,index,element)</code>
+                <ul>
+                    <li>this one inserts the element at the given index into the table.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>
+            You can also assign the return data from a function to be elements in a table.<br>
+            When assigning from a function returning multiple items, each item will be a sequential element in the table.
+        </p>
+    </section>
+
+    <section id="retrieve_table">
+        <header>
+            <h3>Retrieving data from table</h3>
+        </header>
+      
+        <figure id="table_receive">
+              <img alt="Accessing elements in tables" border="0" data-original-height="148" data-original-width="564" src="https://1.bp.blogspot.com/-vYMAIqRSjZI/X0nq6eKp9LI/AAAAAAAADso/ISsvUZJW_qICM97kipaecDXX74aOu4H9ACLcBGAsYHQ/s0/tables_retreive.png"/>
+            <figcaption>Retrieving data from a table.</figcaption>
+        </figure>
+        <p>
+            Retrieving data from a table used as an array is simple: just use the index like you would in most other language.<br>
+            For tables used as associative array/dictionaries, you have two options:
+        </p>
+        <ul>
+            <li>use the key in <code>mytable[key]</code> like using an index.</li>
+            <li>Use <code>mytable.key</code>.</li>
+        </ul>
+    </section>
+
+    <section id="removing_table">
+        <header>
+            <h3>Removing elements from a table</h3>
+        </header>
+        <p>
+            Removing items from a table is easy, just use <code>table.remove(mytable,index)</code>.<br>
+            For an associative array/dictionary table, set the key to nil to remove the key,value pair.
+        </p>
+        <figure id="table_remove">
+              <img alt="Removing elements from a table" border="0" data-original-height="98" data-original-width="498" src="https://1.bp.blogspot.com/--cWQgHoFN5I/X0nq6ec5iEI/AAAAAAAADsk/ol9ebR88BFAANvY9f3RXEwzQJ8TDoJNFgCLcBGAsYHQ/s0/tables_remove.png"/>
+            <figcaption>Removing elements from a table.</figcaption>
+        </figure>
+    </section>
+        <section id="sort">
+            <header>
+                <h3>sorting tables</h3>
+            </header>
+          
+            <p>
+                Sorting tables is pretty easy. lua includes a built in quicksort for this.<br>
+            </p>
+            <figure id="sorting_tables">
+              <img alt="sorting tables in lua" border="0" data-original-height="117" data-original-width="778" width="650" src="https://1.bp.blogspot.com/-KtVwUOfws8I/X0nq5UwwGQI/AAAAAAAADsg/L-CWWQP8SHs2D-s4yWrD4dUXS3gLABO6gCLcBGAsYHQ/s0/table_sort.png"/>
+                <figcaption>sorting tables.</figcaption>
+            </figure>
+            <ul>
+                <li><code>table.sort(mytable)</code>
+                    <ul>
+                        <li>This sorts the elements in the given table numerically.</li>
+                    </ul>
+              </li>
+                <li><code>table.sort(mytable,compr)</code>
+                  <ul>
+                    <li>this version takes in a function to do the comparison.</li>
+                    <li>Using a custom compare function lets you sort elements in a table however you like.</li>
+                        </ul>
+                    </li>
+            </ul>
+        </section>
+        <p>
+            That covers the basics of using tables. But to get really good, you should read up on <em>metatables.</em><br>
+            Metatables cover the inner workings and properties of a table. <br>
+            You can get tables to do some interesting things by changing its metatable.
+        </p>
+    </section>
+
+    <section id="print">
+        <header>
+            <h2>Printing</h2>
+        </header>
+        <p>
+            Printing to stdout is fairly simple<br>
+            The standard way to do so is to use <code>io.write()</code><br>
+            Lua does have a <code>print()</code> function, but <code>io.write()</code> is the standard one to use.
+        </p>
+        <figure id="io_write">
+          <img alt="printing to STDOUT in lua" border="0" data-original-height="100" data-original-width="346" src="https://1.bp.blogspot.com/-YVQMHaHPMUQ/X0nq4O4spYI/AAAAAAAADsQ/2nWDOJfqu4Au5tbsNI5lici4mLyDuKEQgCLcBGAsYHQ/s0/print.png"/>
+            <figcaption>Print to stdout.</figcaption>
+        </figure>
+    </section>
+
+    <section id="control">
+        <header>
+            <h2>Control flow</h2>
+        </header>
+        <p>
+            If you are familiar with any other modern programming language, then this section should be familiar.<br>
+            Only things to note are lua syntax specific things such as:
+        </p>
+        <ul>
+          <li>if statements need an <em>end</em> just like functions.</li>
+          <li>Lua uses <em>and</em> for logic <em>AND.</em></li>
+          <li>Lua uses <em>or</em> for logic <em>OR</em>.</li>
+          <li>Lua uses <em>~=</em> for not equal to.</li>
+          <li>Lua uses <em>not</em> for logical <em>NOT.</em></li>
+          <li><em>elseif</em> is one word.</li>
+
+        </ul>
+        <figure id="control_flow">
+          <img alt="Control flow in lua" border="0" data-original-height="578" data-original-width="459" src="https://1.bp.blogspot.com/-ryePXB9j_3c/X0ntse-LSiI/AAAAAAAADtI/8s0m80XefQcqXzfBad_AnipGsHb3goc-gCLcBGAsYHQ/s0/control.png"/>
+          <figcaption>control flow in lua.</figcaption>
+        </figure>
+    </section>
+
+    <section id="loops">
+        <header>
+            <h2>Loops</h2>
+        </header>
+        <p>
+            Loops in lua should be easy to grasp for anyone with programming experience.
+      </p>
+        <ul>
+            <li>Syntax for a standard <em>for</em> loop is <em>var=start,stop,increment do</em>.</li>
+            <li><em>repeat until("condition")</em> loops until condition in <em>until()</em> is true
+          		<ul>
+            		<li>So you can think of it like a <em>do while()</em> loop but the condtion is reversed</li>
+              	</ul>
+          	</li>
+            <li><em>ipairs()</em> iterates over a table giving you an index and element on each iteration.</li>
+            <li><em>pairs()</em> iterates over a table giving you a key and value on each iteration.</li>
+            <li>loops need an <em>end</em> just like functions and <em>if</em> statements.</li>
+        </ul>
+        <figure id="fruit_loop">
+             <img alt="Loops in lua" border="0" data-original-height="566" data-original-width="755" width="650" src="https://1.bp.blogspot.com/-3j_QvE2JsGE/X0nq3V82vOI/AAAAAAAADsI/1Z-Nnh75kuc-fcc0dfpblafbQZ-2PZOFwCLcBGAsYHQ/s0/loops.png"/>
+          <figcaption>Loops in lua.</figcaption>
+        </figure>
+    </section>
+
+    <section id="file">
+        <header>
+            <h2>File I/O</h2>
+        </header>
+        <p>
+            Basic file I/O is fairly simple. <br>
+            The example code pretty much sums up the basics.<br>
+            There are a few functions such as <code>fseek()</code> and <code>flush()</code> which are not covered here.<br>
+            I felt that those functions were beyond the scope of my very basic introduction guide.
+        </p>
+        <figure id="file_i">
+          <img alt="Reading files in lua" border="0" data-original-height="470" data-original-width="517" src="https://1.bp.blogspot.com/-uEmdx7FMqW0/X0nq23tsrtI/AAAAAAAADr8/PnqARMQAIm04VraE5lgAQTeTi-D8QR2KwCLcBGAsYHQ/s0/file_read.png"/>
+              <figcaption>Reading files in lua.</figcaption>
+        </figure>
+
+        <figure id="file_o">
+ 			<img alt="Writing files in lua" border="0" data-original-height="181" data-original-width="500" src="https://1.bp.blogspot.com/-fqzLEAzzCVg/X0nq22p4_RI/AAAAAAAADr4/rDeshElP8QEnjN9Sn6MBaRIY2SM4D0ZWACLcBGAsYHQ/s0/file_write.png"/>
+            <figcaption>writing to files in lua.</figcaption>
+        </figure>
+    </section>
+
+    <section id="math">
+        <header>
+            <h2>Math functions</h2>
+        </header>
+        <p>
+            The math library for lua has the typical math functions you'd expect. <br>
+            Again, if you have any programming experience then you probably already know these.<br>
+            These are the basics, but lua has a few more.
+        </p>
+        <figure id="math_funcs">
+          <img alt="Loops in lua" border="0" data-original-height="566" data-original-width="755" width="650" src="https://1.bp.blogspot.com/-XUEbrvUOl0s/X0n1L5rzLFI/AAAAAAAADtY/EKOchQfhF141nWt07apoxioQ2xOWw58MACLcBGAsYHQ/s0/math.png"/>
+            <figcaption>Math functions in lua.</figcaption>
+        </figure>
+    </section>
+
+    <section id="strings">
+        <header>
+            <h2>String Functions</h2>
+        </header>
+        <p>
+            Some of the more commonly used and useful string functions in lua.<br>
+            The only thing to take note of is that the regex flavor used by lua may differ a bit from what you find elsewhere.<br>
+            Needles to say, but a look at the lua reference on regex would be beneficial.<br>
+        </p>
+        <figure id="string_funcs">
+          <img alt="String functions in lua" border="0" data-original-height="562" data-original-width="579" src="https://1.bp.blogspot.com/-1NepEtwX31Q/X0nq4ugbSQI/AAAAAAAADsU/NqBOj0nboyMFME1OmjAVnX90Lm5jRQIYACLcBGAsYHQ/s0/string.png"/>
+            <figcaption>string functions in lua.</figcaption>
+        </figure>
+    </section>
+    
+    <section id="final">
+        <header>
+            <h2>Final remarks</h2>
+        </header>
+        <p>
+            Thank you for checking out my basic introduction to programming in lua. <br>
+            I intentionally left out things which I felt were beyond the basic scope and goal of this guide.<br>
+            Two big things which are missing are metatables and OOP.<br>
+            I felt that there is just too much to cover for those topics and they each deserve their own separate posts.<br>
+            You can find all the example code used in this guide over <a id="github" rel="external" target="_blank" href="https://github.com/lackluster-games/lua-quick-start-guide">on github.</a>
+        </p>
+      </section>    
+	</div>
+
+  <!--side bar -->
+  <aside id="Sidebar" class="Sidebar">
+  <div id="Tags" class="Tags">
+	  <div class="Tags_Header">
+	   <header id="Tags_header">
+		<h3>Tags</h3>
+	  </header>
+	</div>
+	<!-- List of tags for articles -->
+	<div class="Tags_List">
+	  <ul id="Tag_list">
+		  <li><a href="./pages/tags/c.html">C</a></li>
+		  <li><a href="./pages/tags/lua.html">Lua</a></li>
+		  <li><a href="./pages/tags/wren.html">Wren</a></li>
+		  <li><a href="./pages/tags/love2d.html">Love2d</a></li>
+		  <li><a href="./pages/tags/linux.html">Linux</a></li>
+	  </ul>
+	</div> 
+	<!-- About me section -->
+	<div id="about" class="About">
+		<header id="about_me">
+			<h3>About me</h3>
+		</header>
+		<p>Amatuer programmer.Interests include C, Lua, game dev, and free software.</p>
+	</div>
+	<!-- Contact me section -->
+	<div id="contact" class="Contact">
+		<header id="contact_me">
+			<h3>Contact Me</h3>
+		</header>
+		<a id="email" target="_blank" href="mailto:armoredmoose@gmail.com">Email Me</a>
+		<a id ="github" target="_blank" rel="external" href="https://www.github.com/return5">Github</a>
+	</div>
+  </div>
+  </aside>
+  </main>
+</html>
+
